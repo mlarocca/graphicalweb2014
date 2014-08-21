@@ -21,6 +21,7 @@
               <li>Data Visualization in Summary</li>
               <li>An Overview of Visualization Libraries</li>
               <li>Declarative Frameworks</li>
+              <li>MVC Visualization Libraries</li>
               <li>A Comparative Example
                   <ul>
                     <li>Description</li>
@@ -39,8 +40,8 @@
         <div class="slide" id="slide_2_1" data-anchor="slide_2_1">
           <div class="intro">
             <h1>Data Visualization in Summary</h1>
-              <h2>Demand for data visualization is costantly growing, such that companies can't afford ignoring it anymore to stay in the market.</h2>
-              <h2>While in-house solutions can be tempting, there are good off-the-shelf solutions available as well.</h2>
+              <h4>Demand for data visualization is costantly growing, such that companies can't afford ignoring it anymore to stay in the market.</h4>
+              <h4>While in-house solutions can be tempting, there are good off-the-shelf solutions available as well.</h4>
           </div>
         </div>
 
@@ -80,11 +81,11 @@
         <div class="slide" id="slide_3_1" data-anchor="slide_3_1">
           <div class="intro">
             <h1>An Overview of Visualization Libraries</h1>
-            <h2>
+            <h4>
               There are a few good, open source chart libraries out there that helps developers integrating charts and visualization solutions in web applications.
-            </h2>
-            <h2>Most of them are based on imperative programming, almost all of them uses SVG over HTML5: let's see which and why</h2>
-            </h2>
+            </h4>
+            <h4>Most of them are based on imperative programming, almost all of them uses SVG over HTML5: let's see which and why</h4>
+            </h4>
           </div>
         </div>
 
@@ -114,18 +115,39 @@
           <h3>HTML5 solutions</h3>
           <p>
           Probably the most famous example of a chart library using this solution is <a href="http://www.chartjs.org/">ChartJs</a>.
-          <br>Another interesting library to manipulate shapes in the Canvas is <a href="http://fabricjs.com/"/>FabricJs.
+          <br>Another interesting library to manipulate shapes in the Canvas is <a href="http://fabricjs.com/"/>FabricJs</a>.
           </p>
         </div>    
         <div class="slide" id="slide_3_4" data-anchor="slide_3_4">
           <h3>SVG solutions</h3>
           <ul>
-            <li><b>D3.js</b></li>
-            <li><b>Raphael </b> and <b>gRaphael</b></li>
-            <li><b>Snap.svg</b></li>
+            <li><b><a href='http://d3js.org/'>D3.js</a></b> is a data-driven, SVG-oriented visualization library created in 2011 at Standford, and brought on as an open source project. 
+                    As of today, it is probably the most widely adopted and the one with the highest number of plugins and extension.
+                    In D3 the data-binding and the presentation are embedded in the logic (JavaScript) part.
+                    <br><b>+</b> You can find extensions or examples for almost any kind of chart you might want to create
+                    <br><b>+</b> Data binding native support
+                    <br><b>+</b> Well documented 
+                    <br><b>-</b> Data binding in JavaScript might not be very intuitive for complicated graphs
+                    <br><b>-</b> Performance is sometimes an issue, and some popular extensions are prone to memory leaks
+                    </li>
+            <li><b><a href="http://raphaeljs.com/">Raphael</a></b> provides a set of primitives for vector-based graphics in the browser supporting SVG and VML, created by Dmitry Baranovskiy as a personal project.
+                <br><b><a href="http://g.raphaeljs.com/">gRaphael</a></b> is a charting library built upon Raphael.
+                    <br><b>+</b> A rich set of low level primitives for drawing SVG
+                    <br><b>+</b> Very good performance and appearance
+                    <br><b>+</b> Great for animations
+                    <br><b>-</b> Doesn't support data binding by itself
+                    <br><b>-</b> Not many examples and charts available on the Net
+              </li>
+            <li><b>Snap.svg</b> is the evolution of Raphael: it's designed for modern browsers, by giving up compatibility with obsolete browsers it supports the newest SVG features like masking, clipping, patterns, full gradients, groups, etc...
+                    <br><b>+</b> Great for SVG drawing
+                    <br><b>+</b> Amazing look thanks to the newset features
+                    <br><b>+</b> Can work with and animate existing SVG (like jQuery with existing HTML)
+                    <br><b>-</b> It's a low level library, no support even for charts yet, let alone data-binding
+                    <br><b>-</b> The project has not reached full maturity yet
+            </li>
             <li>Template based solutions... (more in next section)</li>
           </ul>
-        </div>  
+        </div>
       </div>
 
 
@@ -134,44 +156,41 @@
         <div class="slide" id="slide_4_1" data-anchor="slide_4_1">
           <div class="intro">
             <h1>Declarative Frameworks</h1>
-            <h2>
-              SVG libraries for data visualization are increasingly popular and provides amazing features.
-Current mainstream libraries are great, but often JavaScript-centric, so that they won't allow a clear separation between content and presentation. 
-            </h2>
-            <h2>Moreover, for big projects and large datasets, performance may become an issue.
-            </h2>
+            <h4>
+                As we saw, D3.js supports data-binding, so that your charts can be configured such that they will update as the data to be shown change.
+                <br>
+                Updates, however, must be manually triggered by developers every time they feel their data might have changed, and the update mechanism
+                must be set in stone esplicitely in the code by providing callbacks to be invoked for datapoints entering and exiting the dataset associated with the graph.
+                <br>
+                Declarative frameworks also provide primitives for data-binding and not just for SVG: any DOM element can be associated with data and kept in sync with it.
+                <br>The difference is that the binding happens using templates in the presentation (the HTML markup) and that the presentation is updated automatically every time the data behind it changes.
+            </h4>
           </div>
         </div>
 
         <div class="slide" id="slide_4_2" data-anchor="slide_4_2">
-          <p>As the amount of data produced and made available on the web by social interactions and ecommerce grows larger and larger, structuring and visualizing these data in meaningful (and human-friendly) ways becomes increasingly crucial.
-            <br>
-            The amount of data generated grows exponentially every year, such that in late 2013 it was estimated that 90% of world's data had been generated over the previous two years; companies faces an arm-race to make sense of this flood of information, which can easily make the difference between understanding the market or going out of business. 
-            <br>
-            While most companies easily cope with collecting data (from clicks, visits, purchases, applications' logs etc...), not all of them are able to transform the information into knowledge (or at least valuable indications). The result is that gathering terabytes of information is pointless if then we don't have efficient way to summarize and visualize it - in a few word, extracting meaning from the mere information.
+            <h4>The added value of these frameworks can be identified in a few key points:
+                <ul>
+                    <li>They enforce a greather degree of separation between content and presentation, by letting you bind in the presentation layer data, event handlers and even structure of the view (like for iterative and composite objects, for example tables).</li>
+                    <li>They provide an easy way to keep your data model and your presentation in sync</li>
+                    <li>They generally do it in an extremely efficient way, making sure to reflow only the minimum possible subset of your DOM tree (and keep in mind that reflowing and repainting are usually bottlenecks for client-side browser applications)</li>
+                </ul> 
+            </h4>
         </div>
 
         <div class="slide" id="slide_4_3" data-anchor="slide_4_3">
-          <p>
-          In the last few years both IT giants like Google (with Google Analytics) and startups have turned their attention to this increasing demand for data-visualization tools. A new market segment has indeed thrived around this idea, with mainly two kind of products: </p>
-          <ol>
-            <li>Off-the-shelf solutions, tools that users can either use
-              <ul>
-                <li>to see a commprehensive but static set of views about the data they gathered/generated (Google Analytics itself could be an example)</li>
-                <li>or to create customizable (up to a certain point) charts to visualize their data (HighChart is a good example).</li>
-              </ul>
-            </li>
-            <li>
-              Customized solutions, ad-hoc tailored for specific clients - usually these solutions change over time, and they also include continuous support for clients.
-              <a href="http://www.swiftiq.com/">SwiftIQ</a> is a good example of such a company.
-            </li>
-          </ol>
-          <br>
-          <p>The alternative to such products would be, of course, in-house developments of such tools - but that's often too costly for start-ups or small companies.
-          <br>
-          Either if you need to develop charts on your own or if you are a company that offers in data-visualization as a service, you'll need to build your work upon a chart library - and hopefully a good one too.
-          </p>
-        </div>        
+            <h4>The synchronization between data and DOM is obtained with different strategies, but mainly two kinds of techniques are employed:
+                <ol>
+                  <li><b>Dirty Checking</b> (<a href="https://angularjs.org/">Angular</a>) - Behind the scenes, the framework runs a digest cycle, and during each iteration, a deep comparison on all the Models that are presently displayed within the view is preformed. If a difference is detected, and the data changed is bound to any element, all the element relaying on those data are either notified or directly updated (depending on the implementation).</li>
+                  <li><b>Container objects</b> (<a href="http://www.ractivejs.org/">Ractive</a>, <a href="http://facebook.github.io/react/">React</a>, <a href="http://emberjs.com/">Ember</a>) the framework creates objects which wraps around the data; these objects have accessors to the data and so every time you set or get any property the framework can capture your action and internally broadcast it to all the subscribers.</li>
+                </ol>
+            </h4>
+        </div>
+        <div class="slide" id="slide_4_4" data-anchor="slide_4_4">            
+            <h3>While dirty checking will likely become computationally intensive as the number of watched objects grow, container objects make integration with external code more difficult. Moreover, the introduction of <i>Object.observe()</i> in <a href="http://kangax.github.io/compat-table/es7/">ES7</a> (already supported in Chrome 36) will cut the overhead for dirty checking.
+            </h3>
+        </div>      
+
       </div>
 
 
@@ -179,21 +198,42 @@ Current mainstream libraries are great, but often JavaScript-centric, so that th
       <div class="section" id="section5">
         <div class="slide" id="slide_5_1" data-anchor="slide_5_1">
           <div class="intro">
-            <h1>Using PathsJs in conjunction with RactveJS, it is possible to easily define reactive chart templates directly in the HTML page, bind data and define their behavior (dynamically) in JavaScript, thus obtaining a real MVC-compliant framework; Ractive, moreover, also takes care of animations <i>for free</i>, from a developer perspective.</h1>
+            <h1>MVC Visualization Libraries
+            </h1>
+            <h3>
+              As we saw, D3js introduces the concept of data-binding for SVG-based chart libraries.
+              <br>
+              This binding, however, has to take place in the logic layer: since you also have to specify the structure and composition of your chart in JS, you are actually moving part of your presentation inside the logic.
+              <br>
+              As we strive for greater separation, we look to Declarative Frameworks data-binding features to enforce the MVC pattern.
+              <br>
+              If only there were SVG libraries to use on top of these frameworks...
+            </h3>
           </div>
         </div>
         <div class="slide" id="slide_5_2" data-anchor="slide_5_2">
           <div class="intro">
-Moreover, frameworks like [RactiveJs](http://www.ractivejs.org/), [Angular](https://angularjs.org/) [Ember](http://emberjs.com/) and [React](http://facebook.github.io/react/) are not just meant to let you inject code in your views. They heavily use template based models for presentation to allow you binding event handlers, data and even presentation logic directly inside the DOM elements, and then specify the details of these logic in separate scripts. Basically, it's the same principle used by JsAction for event handlers names (assigned as attributes in the markup) and handlers implementations (specified in js files/scripts). All in all, they rather increase separation between presentation and logic by enforcing the application of the [MVC pattern](http://en.wikipedia.org/wiki/Model–view–controller) to an higher degree, and at the same time they allow a very convenient use of templates.
-
-These frameworks controls much more than event handling: they allow data-binding, which starts to be important when you care for model-view-control separation; they let you bind parts of the view to JavaScript objects, updating it every time the object behind it is modified. Moreover, they update views in particularly efficient ways, modifying only the smallest nodes affected by the change, and so limiting page repainting, since that would be a  bottleneck in most webapps.
-To this end, Ractive and React uses a virtual DOM: an abstract representation of the DOM that allows for very fast operations by minimizing the amount of DOM manipulation that needs to take place.
-
-Ractive and React are very similar to each other (besides the name!), both focusing on _reactive programming_ and visualization, while Angular is not just focused on the view part of MVC, it is a more complex framework, a heavier solution that, at the same time, handles routing, connection to the server etc...
-
-All the frameworks mentioned above, moreover, support [two-way binding](https://docs.angularjs.org/guide/databinding): a very convenient way to enforce consistency between values in the DOM (typically the value of some input field) and some state in the application logic. A couple of examples should help you understanding why they are so convenient; I'll present these example using Ractive, but I encourage you to try and write the same solutions using React or (as much as possible) Angular.
+            <h3>... Turns out, there are ...</h3>
+            <h4>
+                <ul>
+                    <li><b><a href="https://github.com/andreaferretti/paths-js">PathsJs</a></b> Paths.js is a minimal library by Andrea Ferretti that is, explicitly and by design, oriented to support reactive programming by generating SVG paths that can be used with template engines. It offers three API levels, of increasing abstraction. The lowest level is a chainable API to generate an arbitrary SVG path. On top of this, paths for simple geometric shapes such as polygons or circle sectors are defined. At the highest level, there is an API to generate some simple graphs (pie, line chart, radar...) for a collection of data, assembling the simple shapes.
+                    </li>
+                    <li><b><a href="https://github.com/n3-charts">n3-charts</a></b> is a visualization library specifically designed to be used in conjunction with Angular. At the moment, they only offer line-charts, bar-charts and pie-charts. The API is only high-level but the quality of the graphics is very good.</li>
+                </ul>
+            </h4>
           </div>
         </div>
+        <div class="slide" id="slide_5_3" data-anchor="slide_5_23">
+          <div class="intro">
+            <h3>... but you don't even need them!</h3>
+            <h4>
+                So, you can use can draw complete charts using n3-charts or PathsJs' highest level API.
+                <br>Or you can use the low lovel APIs of PathsJs to generate SCG paths or shapes from your data, and bind those objects to your view
+                <br>
+                But in the end, you can do just fine without either: using Ractive or React alone, for example, you can easily and smartly iterate over a collection of objects in-line in the HTML, and associate SVG elements (bars, lines, circles etc...) with each data-point. Add some CSS-styling, and your MVC-compliant chart is ready.
+            </h4>
+          </div>
+        </div>        
       </div>
     </div>
 
