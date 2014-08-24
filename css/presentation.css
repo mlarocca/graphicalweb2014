@@ -1,104 +1,110 @@
-  /* Style for our header texts
-  * --------------------------------------- */
-  h1 {
-    font-size: 5em;
-    font-family: arial,helvetica;
-    color: #fff;
-    margin:0;
-  }
+/* Style for our header texts
+* --------------------------------------- */
+h1 {
+  font-size: 5em;
+  font-family: arial,helvetica;
+  color: #fff;
+  margin:0;
+}
 
-  h2 {
-    font-size: 4em;
-    font-family: arial,helvetica;
-    color: #fff;
-    margin: 10px 100px;
-  }  
+h2 {
+  font-size: 4em;
+  font-family: arial,helvetica;
+  color: #fff;
+  margin: 10px 100px;
+}  
 
-  h3 {
-    font-size: 3em;
-    font-family: arial,helvetica;
-    color: #fff;
-    margin: 10px 100px;
-  }  
+h3 {
+  font-size: 3em;
+  font-family: arial,helvetica;
+  color: #fff;
+  margin: 10px 100px;
+}  
+
+h4 {
+  font-size: 2em;
+  font-family: arial,helvetica;
+  color: #fff;
+  margin: 10px 100px;
+} 
+
+h5 {
+  font-size: 1.5em;
+  font-family: arial,helvetica;
+  color: #fff;
+  margin: 10px 100px;
+}  
+
+h1 li {
+  font-size: 2.5em;
+  font-family: arial,helvetica;
+  color: #fff;
+  margin-top: 10px;
+  margin-left:  200px;
+  text-align: left;
+
+}  
+
+a {
+  font-family: arial,helvetica;
+  color: #fff;
+  margin:0;
+  text-decoration: underline;
+}  
+
+h1 li li {
+  font-size: 0.75em;
+}
+
+
+p {
+  font-size: 1.5em;
+  font-family: arial,helvetica;
+  color: #fff;
+  margin-top: 10px;
+  margin-left:  100px;
+  margin-right:  100px;
+  text-align: left;
+}  
+
+ul li, ol li {
+  font-size: 1em;
+  font-family: arial,helvetica;
+  color: #fff;
+  margin-top: 10px;
+  margin-left:  200px;
+  margin-right:  200px;
+  text-align: left;
+}  
+
+.intro p{
+  color: #fff;
+}
+
+/* Centered texts in each section
+* --------------------------------------- */
+.section{
+  text-align:center;
+}
+
+/* Overwriting styles for control arrows for slides
+* --------------------------------------- */
+.controlArrow.prev {
+  left: 50px;
+}
+.controlArrow.next{
+  right: 50px;
+}
+
+
+/* Bottom menu
+* --------------------------------------- */
+#infoMenu li a {
+  color: #fff;
+}
+
+
   
-  h4 {
-    font-size: 2em;
-    font-family: arial,helvetica;
-    color: #fff;
-    margin: 10px 100px;
-  } 
-
-  h5 {
-    font-size: 1.5em;
-    font-family: arial,helvetica;
-    color: #fff;
-    margin: 10px 100px;
-  }  
-
-  h1 li {
-    font-size: 2.5em;
-    font-family: arial,helvetica;
-    color: #fff;
-    margin-top: 10px;
-    margin-left:  200px;
-    text-align: left;
-
-  }  
-
-  a {
-    font-family: arial,helvetica;
-    color: #fff;
-    margin:0;
-    text-decoration: underline;
-  }  
-
-  h1 li li {
-    font-size: 0.75em;
-  }
-
-
-  p {
-    font-size: 1.5em;
-    font-family: arial,helvetica;
-    color: #fff;
-    margin-top: 10px;
-    margin-left:  100px;
-    margin-right:  100px;
-    text-align: left;
-  }  
- 
-  ul li, ol li {
-    font-size: 1em;
-    font-family: arial,helvetica;
-    color: #fff;
-    margin-top: 10px;
-    margin-left:  200px;
-    margin-right:  200px;
-    text-align: left;
-  }  
-
-  .intro p{
-    color: #fff;
-  }
-
-  /* Centered texts in each section
-  * --------------------------------------- */
-  .section{
-    text-align:center;
-  }
-
-  /* Overwriting styles for control arrows for slides
-  * --------------------------------------- */
-  .controlArrow.prev {
-    left: 50px;
-  }
-  .controlArrow.next{
-    right: 50px;
-  }
-
-
-  /* Bottom menu
-  * --------------------------------------- */
-  #infoMenu li a {
-    color: #fff;
-  }
+pre{
+  text-align: left;
+}

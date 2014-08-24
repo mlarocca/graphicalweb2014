@@ -3,6 +3,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
     <link rel="stylesheet" type="text/css" href="css/presentation.css" />
+    <link rel="stylesheet" href="css/highlight.css">
+  
     <title>Reactive SVG charts with Ractive.js</title>
   </head>
   <body>
@@ -223,7 +225,7 @@
             </h4>
           </div>
         </div>
-        <div class="slide" id="slide_5_3" data-anchor="slide_5_23">
+        <div class="slide" id="slide_5_3" data-anchor="slide_5_3">
           <div class="intro">
             <h3>... but you don't even need them!</h3>
             <h4>
@@ -234,8 +236,191 @@
             </h4>
           </div>
         </div>        
-      </div>
+
     </div>
+
+
+      <div class="section" id="section6">
+        <div class="slide" id="slide_6_1" data-anchor="slide_6_1">
+          <div class="intro">
+            <h1>A Comparative Example</h1>
+            <h3>
+              To better illustrate the differences between the two approaches, an example is probably more effective.
+              <br>
+              The ideal situation where a template based approach result more powerful is with composite documents with a recursive structure, even more if the same sub-layout is repeated over several elements.
+            </h3>
+          </div>
+        </div>
+        <div class="slide" id="slide_6_2" data-anchor="slide_6_2">
+          <div class="intro">
+            <h4>
+                In particular let's suppose:
+                <ul>
+                  <li>We have to group some data in a time series by, for example, day of the week, or - perhaps simpler - by part of the day: morning, afternoon, evening, night.</li>
+                  <li>However, we want this segmantation to be dynamic: even the name of the segments, their number and the time they start/end are passed in the data.</li>
+                  <li>For each segment, a bar chart will be created, showing some metrics about that segment.</li>
+                  <li>At the same time, for each segment a table with a selection of the entries in that segment will be shown.</li>
+                </ul>
+            </h4>
+          </div>
+        </div>
+        <div class="slide" id="slide_6_3" data-anchor="slide_6_3">
+          <div class="intro">
+            <h3>A concrete example</h3>
+            <h4>
+                <ul>
+                  <li>Our time series comes from analytics about a group of web pages</li>
+                  <li>We group data by part of the day, and since this grouping is dynamic, structured data will include infos on these segments.</li>
+                  <li>We measure visits, unique visitors and say click on banners</li>
+                  <li>For each segment, a bar chart will show the values for the three metrics above.</li>
+                  <li>For each segment a table will be shown with the top 10 pages visited for that segment.</li>
+                </ul>
+            </h4>
+          </div>
+        </div>  
+        <div class="slide" id="slide_6_4" data-anchor="slide_6_4">
+
+            <h3>This is an example of a JSON file containing data for this chart</h3>
+            
+              <pre>
+                <code class="json">
+                  [
+                      {
+                          "name": "Morning",
+                          "start_time": "6am",
+                          "end_time": "12am",
+                          "visitors": 22.7,
+                          "unique_visitors": 42.0,
+                          "clicks": 12.5,
+                          "top_pages": [
+                                          {"page": "SomeSportSite.tv", "visitors": 23},
+                                          {"page": "SearchEngine.com", "visitors": 20},
+                                          ...
+                                        ]
+                      },
+                      {
+                          "name": "Afternoon",
+                          "start_time": "12am",
+                          "end_time": "5pm",
+                          "visitors": 30.3,
+                          "unique_visitors": 19.5,
+                          "clicks": 25.0,        
+                          "top_pages": [...]
+                      }
+                      ...
+                  ]
+                </code>
+              </pre>
+
+        </div>  
+        <div class="slide" id="slide_6_5" data-anchor="slide_6_5">
+
+            <h3>This, instead, is a sketch of how the site should look like</h3>
+            <h4>
+                <img src="">
+            </h4>
+          </div>
+
+    </div>    
+
+
+
+      <div class="section" id="section7">
+        <div class="slide" id="slide_7_1" data-anchor="slide_7_1">
+          <div class="intro">
+            <h1>D3 implementation</h1>
+            <h3>
+              Let's first see how this could be implemented using D3
+            </h3>
+          </div>
+        </div>
+        <div class="slide" id="slide_7_2" data-anchor="slide_7_2">
+          <div class="intro">
+            <h3>HTML</h3>
+            <h4>
+                This is how the HTML looks like:
+            </h4>
+            <code>
+            </code>
+            <h4>There are many ways to do this according to taste and needs, but it's usually going to be as straightforward</h4>
+          </div>
+        </div>
+        <div class="slide" id="slide_7_3" data-anchor="slide_7_3">
+          <div class="intro">
+            <h3>Javascript: create a chart for a single segment</h3>
+            <code>
+            </code>
+          </div>
+        </div>  
+        <div class="slide" id="slide_7_4" data-anchor="slide_7_4">
+          <div class="intro">
+            <h3>Javascript: iterating over the segments</h3>
+            <h4>We need to draw an chart like the one in the previous slide for every segment
+            </h4>
+            <code>
+            </code>
+          </div>
+        </div>  
+        <div class="slide" id="slide_7_5" data-anchor="slide_7_5">
+          <div class="intro">
+            <h3>Putting it all together</h3>
+            <h4>You can find a complete example here: <a href=""></a>
+            </h4>
+            <code>
+            </code>
+          </div>
+        </div>  
+
+    </div>      
+
+
+      <div class="section" id="section8">
+        <div class="slide" id="slide_8_1" data-anchor="slide_8_1">
+          <div class="intro">
+            <h1>Ractive version</h1>
+            <h3>
+              Using Ractive and a little basic SVG, we can reach the same result, with much less effort
+            </h3>
+          </div>
+        </div>
+        <div class="slide" id="slide_8_2" data-anchor="slide_8_2">
+          <div class="intro">
+            <h3>HTML</h3>
+            <h4>
+                This is how the HTML looks like:
+            </h4>
+            <code>
+            </code>
+            <h4>There are many ways to do this according to taste and needs, but it's usually going to be as straightforward</h4>
+          </div>
+        </div>
+        <div class="slide" id="slide_8_3" data-anchor="slide_8_3">
+          <div class="intro">
+            <h3>Javascript: create a chart for a single segment</h3>
+            <code>
+            </code>
+          </div>
+        </div>  
+        <div class="slide" id="slide_8_4" data-anchor="slide_8_4">
+          <div class="intro">
+            <h3>Javascript: iterating over the segments</h3>
+            <h4>We need to draw an chart like the one in the previous slide for every segment
+            </h4>
+            <code>
+            </code>
+          </div>
+        </div>  
+        <div class="slide" id="slide_8_5" data-anchor="slide_8_5">
+          <div class="intro">
+            <h3>Putting it all together</h3>
+            <h4>You can find a complete example here: <a href=""></a>
+            </h4>
+            <code>
+            </code>
+          </div>
+        </div>  
+
+    </div>      
 
     <script src="js/lib/jquery-1.11.1.min.js"></script>
 
@@ -247,7 +432,12 @@
     <!-- This following line needed in the case of using the plugin option `scrollOverflow:true` -->
     <script type="application/javascript" src="js/lib/fullpage/vendors/jquery.slimscroll.min.js"></script>
 
+    
     <script type="application/javascript" src="js/lib/fullpage/jquery.fullPage.min.js"></script>
+    
+    <script src="js/lib/highlight.js"></script>
+
     <script type="application/javascript" src="js/presentation.js"></script>
+
   </body>
 </html>
