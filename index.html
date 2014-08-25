@@ -317,7 +317,7 @@
 
             <h3>This, instead, is a sketch of how the site should look like</h3>
             <h4>
-                <img src="">
+                <img src="img/screenshot.jpg"/>
             </h4>
           </div>
 
@@ -389,31 +389,85 @@
             <h4>
                 This is how the HTML looks like:
             </h4>
-            <code>
-            </code>
+            <img src="img/ractive_html.jpg"/>
             <h4>There are many ways to do this according to taste and needs, but it's usually going to be as straightforward</h4>
           </div>
         </div>
         <div class="slide" id="slide_8_3" data-anchor="slide_8_3">
           <div class="intro">
-            <h3>Javascript: create a chart for a single segment</h3>
-            <code>
-            </code>
+            <h3>Javascript: create a chart including all the segments</h3>
+
+            <pre>
+              <code class="javascript">
+          var n = json.length,
+              fields = ['visitors', 'unique_visitors', 'clicks'],
+              fieldsNbr = fields.length,
+              ractive = new Ractive({
+                el: container_id,
+                template: ractiveTemplateId,
+                data: {
+                          daypart: json,
+                          title: title,
+                          fields: fields,
+                          tableField: 0,
+                          rectWidth: chartWidth / n * 0.75 / fieldsNbr - 5,
+                          svgHeight: chartAreaHeight,
+                          svgWidth: chartWidth / n,
+                          chartWidth: chartWidth,
+                          chartHeight: chartHeight,
+                          rectHeight: rectHeight,
+                          sectionWidth: chartWidth / n,
+                          rectMargin: (sectionWidth - rectWidth * fieldsNbr) / (1 + fieldsNbr),
+                          rectTopMargin: DEFAULT_BAR_MARGIN,
+                          scalePercent: function scalePercent(p) {
+                              return p / 100;
+                          }
+                      }
+              });
+          return ractive;              
+              </code>
+            </pre>
           </div>
         </div>  
         <div class="slide" id="slide_8_4" data-anchor="slide_8_4">
           <div class="intro">
-            <h3>Javascript: iterating over the segments</h3>
-            <h4>We need to draw an chart like the one in the previous slide for every segment
-            </h4>
-            <code>
-            </code>
+            <h3>Javascript: the update function</h3>
+            <pre>
+              <code class="javascript">
+                function updateChart(newData) {
+                    var n = json.length,
+                        svgWidth = ractive.get('chartWidth') / n,
+                        sectionWidth = svgWidth;           
+                    ractive.animate('svgWidth', svgWidth);
+                    ractive.animate('sectionWidth', sectionWidth);
+                    ractive.animate('daypart', newData);
+                }                  
+              </code>
+            </pre>
+            <h4>And yes, that's it, as simple as that.</h4>
           </div>
         </div>  
         <div class="slide" id="slide_8_5" data-anchor="slide_8_5">
           <div class="intro">
             <h3>Putting it all together</h3>
-            <h4>You can find a complete example here: <a href=""></a>
+            <h4>
+                You can find a complete example <a href="https://github.com/mlarocca/graphicalweb14">here on github</a>
+                I added also a bit of event handling and extra properties to make things more interesting, but, besides some structural sugar,
+                it doesn't take more than it is shown above.
+                <br>
+                One thing worth noticing is that the amount of logic that "contaminates" the presentation can be controlled by the developer.
+                For example, instead of
+                <br>
+                <span class='markup'>&lt;text x={{rectMargin + field * (rectMargin + rectWidth) + rectWidth * 0.5}} &gt;</span>
+                <br>
+                you could use
+                <br>
+                <span class='markup'>&lt;text x={{textX(field)}} &gt;</span>
+                <br>
+                provided you add the textX method to ractive (as done for scalePercent above)
+                <br>
+                This way, only the binding stays in the HTML, and all the logic is back into JavaScript files. Alternatively, you could go the other way, and put more logic inline.
+
             </h4>
             <code>
             </code>
@@ -421,6 +475,79 @@
         </div>  
 
     </div>      
+
+
+
+
+    <div class="section" id="section9">
+        <div class="slide" id="slide_9_1" data-anchor="slide_9_1">
+          <div class="intro">
+            <h1>PathsJs</h1>
+            <h3>
+              Using PathsJS it is possible to abstract the creation of svg elements and charts even further.
+              Instead of binding data to low level SVG elements in the DOM, with Path you can create the SVG elements (or an entire chart),
+              binding this constructor function to the data, and then iterate on the SVG elements produced.
+            </h3>
+          </div>
+        </div>
+        <div class="slide" id="slide_9_2" data-anchor="slide_9_2">
+          <div class="intro">
+            <h3>Advantages</h3>
+            <h4>
+                This way you get the best of both worlds:
+                <ul>
+                  <li>You can easily apply patterns to create and reuse code for your charts, create primitive blocks far more complex than SVG elements, develop libraries, and in the end
+                      obtain an high degree of modularization.
+                  </li>
+                  <li>You can use templates, separate content and presentation, and once again leverage modularity
+                  </li>
+                </ul>
+            </h4>
+
+          </div>
+        </div>
+        <div class="slide" id="slide_9_3" data-anchor="slide_9_3">
+          <div class="intro">
+            <h3>A few examples:</h3>
+            <h4>To see PathsJs in action, take a look at <a href="http://andreaferretti.github.io/paths-js-demo/">its showcase</a> 
+                <br>Full code (html + coffeescript) is included
+                <br>For a step by step guide, or if you are more of JavaScript guy, check also this <a href="http://mlarocca.github.io/01-22-2014/pathsjs_ractive.html">walkthrough</a> on my blog</h4>
+             
+          </div>
+        </div>  
+
+    </div> 
+
+
+
+    <div class="section" id="section10">
+        <div class="slide" id="slide_10_1" data-anchor="slide_10_1">
+          <div class="intro">
+            <h1>Conclusions</h1>
+            <h4>
+              There are a lot of good data visualization libraries for web applications.
+              <br>
+              D3js is probably the best one and the most widely used. However, there are alternative patterns and styles that are emerging, with some Pros and Cons.
+              <br>
+              Adding templating functionality to D3 would make the library even more awesome: is not a new idea (see <a href="http://jtuulos.github.io/bayd3-may2013/#/">here</a> and <a href="http://bl.ocks.org/jkutianski/7475950">here</a> for example), but in the meantime, waiting for official adoption (or perhaps a new library...) there are good solutions.
+              <br>
+              Declarative frameworks work pretty for this purpose, and they can be used in conjunction with new generation libraries (PathsJs) or directly with SVG markup to generate 
+            </h4>
+          </div>
+        </div>
+        <div class="slide" id="slide_10_2" data-anchor="slide_10_2">
+          <div class="intro">
+            <h3>Next steps</h3>
+            <h4>
+
+                What about <a href="http://www.polymer-project.org/">Polymer</a>?
+                Defining charts as components, it would only take one tag to add them to any page (binding the right data...)
+            </h4>
+
+          </div>
+        </div> 
+
+    </div> 
 
     <script src="js/lib/jquery-1.11.1.min.js"></script>
 

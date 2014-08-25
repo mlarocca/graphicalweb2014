@@ -4,7 +4,10 @@ $(function() {
     sectionsColor: ['#C63D0F', '#1BBC9B', '#7E8F7C', '#C63D0F', '#1BBC9B', '#7E8F7C', '#C63D0F', '#1BBC9B', '#7E8F7C', '#C63D0F', '#1BBC9B', '#7E8F7C'],
     navigation: true,
     navigationPosition: 'right',
-    navigationTooltips: ['Intro', 'Index', 'Data Visualization in Summary', 'Overview', 'Declarative Frameworks', 'MVC Visualization Libraries', 'A Comparative Example', 'D3 Implementation', 'Ractive Version'],
+    navigationTooltips: ['Intro', 'Index', 'Data Visualization in Summary', 'Overview', 
+                          'Declarative Frameworks', 'MVC Visualization Libraries',
+                          'A Comparative Example', 'D3 Implementation', 'Ractive Version',
+                          'PathsJs', 'Conclusions'],
     slidesNavigation: true
   });
   hljs.initHighlightingOnLoad();
