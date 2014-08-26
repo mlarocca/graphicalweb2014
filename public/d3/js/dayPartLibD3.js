@@ -50,31 +50,6 @@ define(['jquery', 'd3', 'bootstrap'],
               rectMargin = (sectionWidth - rectWidth * fieldsNbr) / (1 + fieldsNbr),
               rectTopMargin = DEFAULT_BAR_MARGIN,
 
-              /*
-              ractive = new Ractive({
-                el: containerId,
-
-                data: {
-                          daypart: json,
-                          title: title,
-                          fields: fields,
-                          tableField: tableField,
-                          rectWidth: rectWidth,
-                          svgHeight: svgHeight,
-                          svgWidth: svgWidth,
-                          chartWidth: chartWidth,
-                          chartHeight: chartHeight,
-                          rectHeight: rectHeight,
-                          sectionWidth: sectionWidth,
-                          rectMargin: rectMargin,
-                          rectTopMargin: DEFAULT_BAR_MARGIN,
-                          scalePercent: function scalePercent(p) {
-                              return p / 100;
-                          }
-                      }
-              }),
-*/
-
               container = d3.select('#' + containerId),
               segments = container.selectAll('div.day-part-section')
                        .data(json),
@@ -179,7 +154,7 @@ define(['jquery', 'd3', 'bootstrap'],
                       return d.selected ? 'day-part-table-selected' : '';
                     })
                     .on('click', function (d,i) {
-                      updateSelection(d, i);
+                      updateSelection(d, this);
                       return false;
                     });
 
@@ -192,7 +167,7 @@ define(['jquery', 'd3', 'bootstrap'],
               segmentTableRows
                 .append('td')
                 .attr('class', function (d) {
-                  return d.selected ? 'day-part-table-selected' : '';
+                  return d.highlighted ? 'day-part-table-highlighted' : '';
                 })
                 .text(function (d, i){
                     return d.page;
@@ -205,16 +180,14 @@ define(['jquery', 'd3', 'bootstrap'],
                 });                         
 
 
-              updateSelection =  function (event, part, page) {
-                  var data = json;
-                  page = json[part].top_pages[page];
+              updateSelection =  function (page, elem) {
                   if (page.selected) {
                     page.selected = false;
-                    json[part].selectedItemsTotal = json[part].selectedItemsTotal - page[fields[tableField]];
+                    $(elem).toggleClass('day-part-table-selected');
                   } else {
                     page.selected = true;
-                    json[part].selectedItemsTotal = json[part].selectedItemsTotal + page[fields[tableField]];
-                    //console.log(data[part].selectedItemsTotal)
+                    $(elem).toggleClass('day-part-table-selected');
+
                   }
               };
 
