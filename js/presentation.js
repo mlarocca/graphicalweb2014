@@ -1,7 +1,7 @@
 $(function() {
   $('#fullpage').fullpage({
     anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage' , '6thPage', '7thPage', '8thPage', '9thPage', '10thPage', '11thPage'],
-    sectionsColor: ['#C63D0F', '#1BBC9B', '#7E8F7C', '#C63D0F', '#1BBC9B', '#7E8F7C', '#C63D0F', '#1BBC9B', '#7E8F7C', '#C63D0F', '#1BBC9B', '#7E8F7C'],
+    sectionsColor: ['#6666FF', '#1BBC9B', '#7E8F7C', '#263D83', '#33CC33', '#FF85AD', '#C63D0F', '#1BBC9B', '#7E8F7C', '#263D83', '#33CC33'],
     navigation: true,
     navigationPosition: 'right',
     navigationTooltips: ['Intro', 'Index', 'Data Visualization in Summary', 'Overview', 
