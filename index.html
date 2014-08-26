@@ -13,7 +13,7 @@
         <div class="intro">
           <h1>Reactive SVG charts with Ractive.js</h1>
           <h3>Applying MVC pattern to Data Visualization</h3>
-          <h4>author: Marcello La Rocca - Data Visualization Engineer @ <a href="http://www.swiftiq.com/">SwiftIQ</a></h4> 
+          <h4>author: <a href="https://twitter.com/marcellolarocca">Marcello La Rocca</a> - Data Visualization Engineer @ <a href="http://www.swiftiq.com/">SwiftIQ</a></h4> 
         </div>
       </div>
       <div class="section" id="section1">
@@ -87,7 +87,6 @@
               There are a few good, open source chart libraries out there that helps developers integrating charts and visualization solutions in web applications.
             </h4>
             <h4>Most of them are based on imperative programming, almost all of them uses SVG over HTML5: let's see which and why</h4>
-            </h4>
           </div>
         </div>
 
@@ -117,7 +116,7 @@
           <h3>HTML5 solutions</h3>
           <p>
           Probably the most famous example of a chart library using this solution is <a href="http://www.chartjs.org/">ChartJs</a>.
-          <br>Another interesting library to manipulate shapes in the Canvas is <a href="http://fabricjs.com/"/>FabricJs</a>.
+          <br>Another interesting library to manipulate shapes in the Canvas is <a href="http://fabricjs.com/">FabricJs</a>.
           </p>
         </div>    
         <div class="slide" id="slide_3_4" data-anchor="slide_3_4">
@@ -315,10 +314,10 @@
         </div>  
         <div class="slide" id="slide_6_5" data-anchor="slide_6_5">
 
-            <h3>This, instead, is a sketch of how the site should look like</h3>
-            <h4>
-                <img src="img/screenshot.jpg"/>
-            </h4>
+            <h3>This, instead, is a sketch of how the chart should look like</h3>
+            
+                <img src="img/screenshot.jpg" alt="Chart Screenshot"/>
+            
           </div>
 
     </div>    
@@ -338,33 +337,163 @@
           <div class="intro">
             <h3>HTML</h3>
             <h4>
-                This is how the HTML looks like:
+                This is all the HTML needed for a chart:
             </h4>
-            <code>
-            </code>
-            <h4>There are many ways to do this according to taste and needs, but it's usually going to be as straightforward</h4>
+              <pre>
+                  <code class="javascript">
+                    &lt;div id="day-chart" class="day-chart-div"&gt;&lt;/div&gt;
+                  </code>
+              </pre>  
+            <h4>Of course, part of the structure that we will add via JavaScript can be moved here, but it's just a little part.
+                There are many ways to do this according to taste and needs, but html is usually going to be as straightforward</h4>
           </div>
         </div>
         <div class="slide" id="slide_7_3" data-anchor="slide_7_3">
           <div class="intro">
             <h3>Javascript: create a chart for a single segment</h3>
-            <code>
-            </code>
+                <pre style="max-height:480px; overflow-y: scroll">
+                  <code class="javascript">
+          var segmentChart = segments
+                          .append('div')
+                          .attr('class', 'day-part-chart')
+                            .append('svg:svg')
+                            .attr('width', svgWidth)
+                            .attr('height', svgHeight);
+
+              fields.forEach(function (fieldName, fieldIndex) {
+                  segmentChart
+                    .append('text')
+                    .attr('x', rectMargin + fieldIndex * (rectMargin + rectWidth) + rectWidth * 0.5)
+                    .attr('y', function (d) {
+                      return rectTopMargin - 1 + rectHeight * (1 - scalePercent(d[fieldName]));
+                    })
+                    .attr('text-anchor', 'middle')
+                    .text(function (d) {
+                      return d[fieldName];
+                    });
+
+                  segmentChart
+                    .append('rect')
+                    .attr('class', 'day-part-main-bar')
+                    .attr('x', rectMargin + fieldIndex * (rectMargin + rectWidth))
+                    .attr('y', function (d) {
+                      return rectTopMargin + rectHeight * (1 - scalePercent(d[fieldName]));
+                    })
+                    .attr('width', rectWidth + 'px')
+                    .transition()
+                    .attr('height', function (d) {
+                        return rectHeight * scalePercent(d[fieldName]);
+                    })
+                    .duration(1000);
+              });
+
+              segmentChart
+                .append('line')
+                .attr('x1', 0)
+                .attr('x2', sectionWidth)
+                .attr('y1', rectTopMargin + rectHeight)
+                .attr('y2', rectTopMargin + rectHeight);
+                       
+
+              segmentLabels = segments
+                                .append('div')
+                                .attr('class', 'day-part-part-area');
+
+
+              segmentLabels
+                  .append('span')
+                    .attr('class', 'day-part-name')
+                    .text(function (d, i) {
+                        return d.name;
+                    })
+                    .append('br');
+
+              segmentLabels
+                  .append('span')
+                    .attr('class', 'day-part-time-window')
+                    .text(function (d, i) {
+                        return d.start_time + ' - ' + d.end_time;
+                    });                    
+
+              segmentTable = segments
+                              .append('div')
+                              .attr('class', 'day-part-table-container');
+              
+              segmentTableRows = segmentTable
+                .append('table')
+                .attr('class', 'day-part-table')
+                  .selectAll('tr')
+                  .data(function (d) {
+                      return d.top_pages;
+                  })
+                  .enter()
+                    .append('tr')
+                    .attr('class', function (d) {
+                      return d.selected ? 'day-part-table-selected' : '';
+                    })
+                    .on('click', function (d,i) {
+                      updateSelection(d, i);
+                      return false;
+                    });
+
+              segmentTableRows
+                .append('td')
+                .text(function (d, i){
+                    return (i+1) + '.';
+                });
+
+              segmentTableRows
+                .append('td')
+                .attr('class', function (d) {
+                  return d.selected ? 'day-part-table-selected' : '';
+                })
+                .text(function (d, i){
+                    return d.page;
+                });   
+
+              segmentTableRows
+                .append('td')
+                .text(function (d, i){
+                    return d[fields[tableField]] + '%';
+                });                         
+
+                  </code>
+              </pre> 
           </div>
+          <h4>Code above is so long that you won't fit in a single page, even on two columns. To see the complete example, go <a href="https://github.com/mlarocca/graphicalweb2014/blob/master/public/d3/js/dayPartLibD3.js">here</a> on github</h4>
+
         </div>  
         <div class="slide" id="slide_7_4" data-anchor="slide_7_4">
           <div class="intro">
-            <h3>Javascript: iterating over the segments</h3>
-            <h4>We need to draw an chart like the one in the previous slide for every segment
+            <h3>Javascript: iterating over the parts of the day</h3>
+            <h4>We need to draw an chart like the one in the previous slide for every time segment
             </h4>
-            <code>
-            </code>
+            <pre>
+              <code class="javascript">
+              var container = d3.select('#' + containerId),
+                  segments = container.selectAll('div.day-part-section')
+                           .data(json),  
+                  newSegments = segments
+                           .enter()
+                           .append('div')
+                           .attr('class', 'day-part-section')
+                           .style('width', sectionWidth + 'px')
+                           .style('left', function (d, i) {
+                                                  return (i * sectionWidth) + 'px';
+                                          })
+                           .style('height', chartHeight + 'px');   
+              </code>
+            </pre>
+            <h4>Luckily we just need to bind the right data to our container.
+            </h4>            
           </div>
         </div>  
         <div class="slide" id="slide_7_5" data-anchor="slide_7_5">
           <div class="intro">
             <h3>Putting it all together</h3>
-            <h4>You can find a complete example here: <a href=""></a>
+            <h4>You can find a complete example here: <a href="https://github.com/mlarocca/graphicalweb2014/tree/master/public/d3"></a>
+                <br>
+                As you can see, most of the presentation is not in the HTML (actually, none of it is), and instead it is intertweened with the JavaScript code.
             </h4>
             <code>
             </code>
@@ -389,8 +518,8 @@
             <h4>
                 This is how the HTML looks like:
             </h4>
-            <img src="img/ractive_html.jpg"/>
-            <h4>There are many ways to do this according to taste and needs, but it's usually going to be as straightforward</h4>
+
+            <img src="img/ractive_html.jpg" alt="HTML code"/>
           </div>
         </div>
         <div class="slide" id="slide_8_3" data-anchor="slide_8_3">
@@ -537,9 +666,21 @@
         </div>
         <div class="slide" id="slide_10_2" data-anchor="slide_10_2">
           <div class="intro">
+            <h3>Differences</h3>
+            <h4>
+                It is, certainly, also a matter of taste and habit, but you can easily see how template based solutions looks a bit more structured, easier to read (it is easy to look at the structure of the page and understand its layout and how elements are related to each other).
+                <br>
+                Another difference is that with Ractive you can easily bind more than one object to the same chart, iterate different subsections of the chart over different composite objects, and control the overall structure at a fine grain.
+                <br>
+                Finally, handling updates and animations on the data is a lot easier!
+            </h4>
+
+          </div>
+        </div>         
+        <div class="slide" id="slide_10_3" data-anchor="slide_10_3">
+          <div class="intro">
             <h3>Next steps</h3>
             <h4>
-
                 What about <a href="http://www.polymer-project.org/">Polymer</a>?
                 Defining charts as components, it would only take one tag to add them to any page (binding the right data...)
             </h4>
@@ -565,6 +706,6 @@
     <script src="js/lib/highlight.js"></script>
 
     <script type="application/javascript" src="js/presentation.js"></script>
-
+  </div>
   </body>
 </html>
