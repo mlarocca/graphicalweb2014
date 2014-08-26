@@ -1,0 +1,125 @@
+div.day-part-section {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Century Gothic', sans-serif !important;
+}
+
+.day-part-title {
+  text-align: center;
+  font-family: 'Century Gothic', sans-serif !important;
+  font-size: 24px;  
+}
+
+rect.day-part-main-bar {
+  fill: rgba(0, 0, 255, 0.75);
+  stroke-width: 0;
+}
+
+rect.day-part-selection-bar {
+  fill: rgba(0, 255, 0, 0.65);
+  stroke-width: 0;
+}
+
+.day-part-chart text {
+  font-size: 12px;
+}
+
+.day-part-chart line {
+  stroke:black;
+  stroke-width:2;
+}
+
+.day-part-part-area {
+  background-color: #eee;
+  text-align: center;
+}
+
+.day-part-time-window {
+  font-size: 14px;
+}
+
+.day-part-table {
+  width: 100%;
+  min-width: 100%;
+  border-spacing: 0px 1px;
+}
+
+.day-part-table-highlighted {
+  color: #C00000;
+  font-weight: bold;
+}
+
+tr.day-part-table-selected {
+  background-color: rgba(0, 200, 0, 0.5);
+}
+
+.day-part-table tr:hover{
+  background-color: rgba(0, 0, 200, 0.5);
+  cursor: pointer;
+}
+
+.day-part-table td {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.day-part-table td:first-child {
+  width: 20px;
+  text-align: right;
+}
+
+.day-part-table td:last-child {
+  width: 20px;
+  text-align: right;
+  /*background-color: #eee;*/
+}
+
+/*********** TOOLTIP ************/
+
+.tooltip-title {
+  text-align: center;
+}
+
+hr {
+  margin-top: 5px !important;
+  margin-bottom: 10px !important;
+}
+
+.tooltip-lhs-name {
+  color: black !important;
+  font-size: 14px !important;
+  font-weight: bold;
+}
+
+.tooltip-rhs-name {
+  color: #5cb85c !important;
+  font-size: 12px !important;
+  font-style: italic;
+}
+
+.tooltip-field-name {
+  font-size: 13px !important;
+  font-weight: bold;
+}
+
+.tooltip-field-value {
+  font-size: 13px !important;
+  font-weight: normal;
+
+}
+
+
+circle[data-toggle="popover"] {
+  cursor: pointer;
+  transform-origin: 0% 0%;
+  -ms-transform-origin: 0% 0%; /* IE 9 */  
+  -webkit-transform-origin: 0% 0%;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+}
+
+circle[data-toggle="popover"]:hover {
+  transform: scale(1.2);
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari and Chrome */  
+}

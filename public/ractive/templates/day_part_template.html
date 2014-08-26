@@ -1,0 +1,48 @@
+
+<div class='day-part-container'>  
+  <script id='dayPartTemplate' type='text/ractive'>
+    <div class='day-part-title' style='width:{{chartWidth}}px'>{{title}}</div>
+    {{#daypart: part}}
+      <div class='day-part-section' style='width:{{sectionWidth}}px; left:{{part * sectionWidth}}px; height:{{chartHeight}}px;'>
+        <div class='day-part-chart'>
+          <svg width={{svgWidth}} height={{svgHeight}}>
+            {{#fields: field}}
+              <text x={{rectMargin + field * (rectMargin + rectWidth) + rectWidth * 0.5}} 
+                    y={{rectTopMargin - 1 + rectHeight * (1 - scalePercent(daypart[part][fields[field]]))}} 
+                    text-anchor="middle">
+                    {{daypart[part][fields[field]]}}%
+              </text>
+              <rect x={{rectMargin + field * (rectMargin + rectWidth)}} 
+                    y={{rectTopMargin + rectHeight * (1 - scalePercent(daypart[part][fields[field]]))}} 
+                    width={{rectWidth}} 
+                    height={{rectHeight * scalePercent(daypart[part][fields[field]])}} 
+                    class='day-part-main-bar'></rect>
+            {{/fields}}
+            <line x1=0 
+                  y1={{rectTopMargin + rectHeight}} 
+                  x2={{sectionWidth}} 
+                  y2={{rectTopMargin + rectHeight}}>
+            </line>
+          </svg>
+        </div>
+        <div class='day-part-part-area'>
+          <span class="day-part-name">{{name}}</span><br>
+          <span class="day-part-time-window">({{start_time}} - {{end_time}})</span>
+        </div>
+        <div class='day-part-table-container'>
+          <table class='day-part-table'>
+            {{#top_pages: p}}
+              <tr on-click="updateSelection:{{part}},{{p}}" 
+                  class={{selected ? 'day-part-table-selected' : ''}}>
+                <td>{{p + 1}}.</td>
+                <td class={{highlighted ? 'day-part-table-highlighted' : ''}}>{{page}}</td>
+                <td>{{daypart[part].top_pages[p][fields[tableField]]}}%</td>
+              </tr>
+            {{/top_pages}}
+          </table>
+        </div>
+      </div>
+    {{/daypart}}
+  </script>
+
+</div>

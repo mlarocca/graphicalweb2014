@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Morning",
+        "start_time": "6am",
+        "end_time": "12am",
+        "visitors": 22.7,
+        "unique_visitors": 42.0,
+        "clicks": 12.5,
+        "top_pages": [
+                            {"page": "SomeSportSite.tv", "visitors": 23},
+                            {"page": "SearchEngine.com", "visitors": 20},
+                            {"page": "Ecommerce.com", "visitors": 10},
+                            {"page": "SomeNewsSite.info", "visitors": 8},
+                            {"page": "FoodDelivery.com", "visitors": 7, "highlighted": true},
+                            {"page": "Pegi21.org", "visitors": 7},
+                            {"page": "AnotherNewsSite.tv", "visitors": 6},
+                            {"page": "Lottery.gov", "visitors": 6},
+                            {"page": "3DPrinter.info", "visitors": 5},
+                            {"page": "Ractivejs.org", "visitors": 4}
+                        ]
+    },
+    {
+        "name": "Afternoon",
+        "start_time": "12am",
+        "end_time": "5pm",
+        "visitors": 30.3,
+        "unique_visitors": 19.5,
+        "clicks": 25.0,        
+        "top_pages": [
+                            {"page": "SomeNewsSite.info", "visitors": 22},
+                            {"page": "SearchEngine.com", "visitors": 18},
+                            {"page": "Ecommerce.com", "visitors": 14},
+                            {"page": "Ractivejs.org", "visitors": 12},
+                            {"page": "Pegi21.org", "visitors": 9},
+                            {"page": "Lottery.gov", "visitors": 8},
+                            {"page": "3DPrinter.info", "visitors": 8},
+                            {"page": "D3js.org", "visitors": 7, "highlighted": true},
+                            {"page": "SomeSportSite.tv", "visitors": 6},
+                            {"page": "Reactjs.com", "visitors": 5}
+                        ]
+    },
+    {
+        "name": "Evening",
+        "start_time": "5pm",
+        "end_time": "10pm",
+        "visitors": 32.2,
+        "unique_visitors": 22.1,
+        "clicks": 42.8,        
+        "top_pages": [
+                            {"page": "SomeNewsSite.info", "visitors": 20},
+                            {"page": "Ecommerce.com", "visitors": 15},
+                            {"page": "SwiftIQ.com", "visitors": 12, "highlighted": true},
+                            {"page": "Lottery.gov", "visitors": 11},
+                            {"page": "Pegi21.org", "visitors": 11},
+                            {"page": "Ractivejs.org", "visitors": 8},
+                            {"page": "SearchEngine.com", "visitors": 7},
+                            {"page": "Reactjs.com", "visitors": 5},
+                            {"page": "3DPrinter.info", "visitors": 4},
+                            {"page": "D3js.org", "visitors": 2, "highlighted": true}
+                        ]
+    },
+    {
+        "name": "Night",
+        "start_time": "10pm",
+        "end_time": "6am",
+        "visitors": 14.8,
+        "unique_visitors": 16.4,
+        "clicks": 30.3,        
+        "top_pages": [      
+                            {"page": "Ecommerce.com", "visitors": 22},
+                            {"page": "SomeNewsSite.info", "visitors": 15},
+                            {"page": "SwiftIQ.com", "visitors": 13, "highlighted": true},
+                            {"page": "Pegi21.org", "visitors": 11},
+                            {"page": "Lottery.gov", "visitors": 10},
+                            {"page": "Ractivejs.org", "visitors": 7},
+                            {"page": "Reactjs.com", "visitors": 5},
+                            {"page": "SearchEngine.com", "visitors": 5},
+                            {"page": "3DPrinter.info", "visitors": 4},
+                            {"page": "FoodDelivery.com", "visitors": 3}
+                        ]
+    }
+]

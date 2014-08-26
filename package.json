@@ -1,0 +1,11 @@
+{
+  "name" : "ServeStaticContent",
+  "version" : "0.0.1",
+  "dependencies" : {
+    "connect": "2.11.x"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
+}

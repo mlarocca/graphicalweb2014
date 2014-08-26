@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Morning",
+        "start_time": "6am",
+        "end_time": "11am",
+        "visitors": 15.7,
+        "unique_visitors": 21.0,
+        "clicks": 18.2,
+        "top_pages": [
+                            {"page": "www.sport.tv", "visitors": 22},
+                            {"page": "www.giyf.org", "visitors": 21},
+                            {"page": "www.buy.it", "visitors": 11},
+                            {"page": "www.news.info", "visitors": 9},
+                            {"page": "www.pizza.com", "visitors": 5, "highlighted": true},
+                            {"page": "www.funny.to", "visitors": 5},
+                            {"page": "www.news2.tv", "visitors": 4},
+                            {"page": "www.lottery.gov", "visitors": 4},
+                            {"page": "www.print.it", "visitors": 3},
+                            {"page": "www.ractivejs.org", "visitors": 2}
+                        ]
+    },
+    {
+        "name": "Afternoon",
+        "start_time": "11am",
+        "end_time": "5pm",
+        "visitors": 25.3,
+        "unique_visitors": 29.5,
+        "clicks": 35.0,        
+        "top_pages": [
+                            {"page": "www.news.info", "visitors": 25},
+                            {"page": "www.giyf.org", "visitors": 19},
+                            {"page": "www.buy.it", "visitors": 15},
+                            {"page": "www.ractivejs.org", "visitors": 11},
+                            {"page": "www.funny.to", "visitors": 8},
+                            {"page": "www.lottery.gov", "visitors": 7},
+                            {"page": "www.print.it", "visitors": 7},
+                            {"page": "www.d3js.org", "visitors": 6, "highlighted": true},
+                            {"page": "www.sport.tv", "visitors": 5},
+                            {"page": "www.Reactjs.com", "visitors": 4}
+                        ]
+    },
+    {
+        "name": "Evening",
+        "start_time": "5pm",
+        "end_time": "10pm",
+        "visitors": 34.2,
+        "unique_visitors": 35.1,
+        "clicks": 24.4,        
+        "top_pages": [
+                            {"page": "www.news.info", "visitors": 21},
+                            {"page": "www.buy.it", "visitors": 14},
+                            {"page": "SwiftIQ.com", "visitors": 13, "highlighted": true},
+                            {"page": "www.lottery.gov", "visitors": 12},
+                            {"page": "www.funny.to", "visitors": 10},
+                            {"page": "www.ractivejs.org", "visitors": 9},
+                            {"page": "www.giyf.org", "visitors": 8},
+                            {"page": "www.Reactjs.com", "visitors": 6},
+                            {"page": "www.print.it", "visitors": 3},
+                            {"page": "www.d3js.org", "visitors": 1, "highlighted": true}
+                        ]
+    },
+    {
+        "name": "Night",
+        "start_time": "10pm",
+        "end_time": "6am",
+        "visitors": 24.8,
+        "unique_visitors": 18.6,
+        "clicks": 22.4,        
+        "top_pages": [      
+                            {"page": "www.buy.it", "visitors": 21},
+                            {"page": "www.news.info", "visitors": 14},
+                            {"page": "SwiftIQ.com", "visitors": 12, "highlighted": true},
+                            {"page": "www.funny.to", "visitors": 10},
+                            {"page": "www.lottery.gov", "visitors": 9},
+                            {"page": "www.ractivejs.org", "visitors": 8},
+                            {"page": "www.Reactjs.com", "visitors": 6},
+                            {"page": "www.giyf.org", "visitors": 6},
+                            {"page": "www.print.it", "visitors": 5},
+                            {"page": "www.homepizza.com", "visitors": 2}
+                        ]
+    }
+]
