@@ -109,7 +109,7 @@
             </li>
             <li>Also, Canvas are great to draw raster images and creates sprites, while in SVG it is simply not possible.</li>
           </ul>
-          <p>All things considered, since rarely you do need to insert more than a few hundreds shapes in a single chart (and if you do you might want to revisit yur design), so far SVG has been the mainstream technology for data visualization.</p>
+          <p>All things considered, since rarely you do need to insert more than a few hundreds shapes in a single chart (and if you do you might want to revisit your design), so far SVG has been the mainstream technology for data visualization.</p>
         </div>
 
         <div class="slide" id="slide_3_3" data-anchor="slide_3_3">
@@ -172,7 +172,7 @@
         <div class="slide" id="slide_4_2" data-anchor="slide_4_2">
             <h4>The added value of these frameworks can be identified in a few key points:
                 <ul>
-                    <li>They enforce a greather degree of separation between content and presentation, by letting you bind in the presentation layer data, event handlers and even structure of the view (like for iterative and composite objects, for example tables).</li>
+                    <li>They enforce a greater degree of separation between content and presentation, by letting you bind in the presentation layer data, event handlers and even structure of the view (like for iterative and composite objects, for example tables).</li>
                     <li>They provide an easy way to keep your data model and your presentation in sync</li>
                     <li>They generally do it in an extremely efficient way, making sure to reflow only the minimum possible subset of your DOM tree (and keep in mind that reflowing and repainting are usually bottlenecks for client-side browser applications)</li>
                 </ul> 
@@ -182,7 +182,7 @@
         <div class="slide" id="slide_4_3" data-anchor="slide_4_3">
             <h4>The synchronization between data and DOM is obtained with different strategies, but mainly two kinds of techniques are employed:
                 <ol>
-                  <li><b>Dirty Checking</b> (<a href="https://angularjs.org/">Angular</a>) - Behind the scenes, the framework runs a digest cycle, and during each iteration, a deep comparison on all the Models that are presently displayed within the view is preformed. If a difference is detected, and the data changed is bound to any element, all the element relaying on those data are either notified or directly updated (depending on the implementation).</li>
+                  <li><b>Dirty Checking</b> (<a href="https://angularjs.org/">Angular</a>) - Behind the scenes, the framework runs a digest cycle, and during each iteration, a deep comparison on all the Models that are presently displayed within the view is performed. If a difference is detected, and the data changed is bound to any element, all the element relaying on those data are either notified or directly updated (depending on the implementation).</li>
                   <li><b>Container objects</b> (<a href="http://www.ractivejs.org/">Ractive</a>, <a href="http://facebook.github.io/react/">React</a>, <a href="http://emberjs.com/">Ember</a>) the framework creates objects which wraps around the data; these objects have accessors to the data and so every time you set or get any property the framework can capture your action and internally broadcast it to all the subscribers.</li>
                 </ol>
             </h4>
@@ -229,7 +229,7 @@
             <h3>... but you don't even need them!</h3>
             <h4>
                 So, you can use can draw complete charts using n3-charts or PathsJs' highest level API.
-                <br>Or you can use the low lovel APIs of PathsJs to generate SCG paths or shapes from your data, and bind those objects to your view
+                <br>Or you can use the low lovel APIs of PathsJs to generate SVG paths or shapes from your data, and bind those objects to your view
                 <br>
                 But in the end, you can do just fine without either: using Ractive or React alone, for example, you can easily and smartly iterate over a collection of objects in-line in the HTML, and associate SVG elements (bars, lines, circles etc...) with each data-point. Add some CSS-styling, and your MVC-compliant chart is ready.
             </h4>
@@ -640,8 +640,14 @@
             <h3>A few examples:</h3>
             <h4>To see PathsJs in action, take a look at <a href="http://andreaferretti.github.io/paths-js-demo/">its showcase</a> 
                 <br>Full code (html + coffeescript) is included
-                <br>For a step by step guide, or if you are more of JavaScript guy, check also this <a href="http://mlarocca.github.io/01-22-2014/pathsjs_ractive.html">walkthrough</a> on my blog</h4>
-             
+                <br>For a step by step guide, or if you are more of JavaScript guy, check also this <a href="http://mlarocca.github.io/01-22-2014/pathsjs_ractive.html">walkthrough</a> on my blog
+            </h4>
+            <br>
+            <br>
+            <h4>Also, take a look at the slides of this talk held by Andrea Ferretti @ MilanoJS: 
+              <br><a href="https://github.com/unicredit/paths-talk-slides">Slides</a>
+              <br><a href="https://github.com/unicredit/paths-talk-examples">Examples</a>
+             </h4>
           </div>
         </div>  
 
