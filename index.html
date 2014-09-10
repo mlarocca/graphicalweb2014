@@ -97,7 +97,7 @@
             <li><b>HTML5</b> solutions uses the Canvas object, introduced in HTML5, to draw the shapes (or images) in the chart.</li>
             <li><b>SVG</b> solutions uses the Scalable Vector Graphic format, a markup language derived from XML that is supported by all browsers. Current version is 1.1 (technically 1.2, but no new features were introduced), but version 2 of SVG specifications is about to be released. </li>
           </ul> 
-          <p>SVG and HTML5 solutions, as you would expect, have some Pros and Cons; oversimplyfying we could say that:</p>
+          <p>SVG and HTML5 solutions, as you would expect, have some Pros and Cons; oversimplifying we could say that:</p>
           <ul>
             <li>SVG is a vector-based format, which means each drawn shape is an actual object added to the DOM. This means that the same shape or complex drawing can be ported to different devices and screen sizes without any noticeable loss of quality; also, being each shape an object of its own, if an attribute of an SVG object is changed, the browser can automatically update the view by re-rendering the corresponding node.
             </li>
@@ -139,7 +139,7 @@
                     <br><b>-</b> Doesn't support data binding by itself
                     <br><b>-</b> Not many examples and charts available on the Net
               </li>
-            <li><b>Snap.svg</b> is the evolution of Raphael: it's designed for modern browsers, by giving up compatibility with obsolete browsers it supports the newest SVG features like masking, clipping, patterns, full gradients, groups, etc...
+            <li><b><a href="http://snapsvg.io/">Snap.svg</a></b> is the evolution of Raphael: it's designed for modern browsers, by giving up compatibility with obsolete browsers it supports the newest SVG features like masking, clipping, patterns, full gradients, groups, etc...
                     <br><b>+</b> Great for SVG drawing
                     <br><b>+</b> Amazing look thanks to the newset features
                     <br><b>+</b> Can work with and animate existing SVG (like jQuery with existing HTML)
@@ -161,7 +161,7 @@
                 As we saw, D3.js supports data-binding, so that your charts can be configured such that they will update as the data to be shown change.
                 <br>
                 Updates, however, must be manually triggered by developers every time they feel their data might have changed, and the update mechanism
-                must be set in stone esplicitely in the code by providing callbacks to be invoked for datapoints entering and exiting the dataset associated with the graph.
+                must be set in stone explicitly in the code by providing callbacks to be invoked for datapoints entering and exiting the dataset associated with the graph.
                 <br>
                 Declarative frameworks also provide primitives for data-binding and not just for SVG: any DOM element can be associated with data and kept in sync with it.
                 <br>The difference is that the binding happens using templates in the presentation (the HTML markup) and that the presentation is updated automatically every time the data behind it changes.
@@ -217,7 +217,7 @@
             <h3>... Turns out, there are ...</h3>
             <h4>
                 <ul>
-                    <li><b><a href="https://github.com/andreaferretti/paths-js">PathsJs</a></b> Paths.js is a minimal library by Andrea Ferretti that is, explicitly and by design, oriented to support reactive programming by generating SVG paths that can be used with template engines. It offers three API levels, of increasing abstraction. The lowest level is a chainable API to generate an arbitrary SVG path. On top of this, paths for simple geometric shapes such as polygons or circle sectors are defined. At the highest level, there is an API to generate some simple graphs (pie, line chart, radar...) for a collection of data, assembling the simple shapes.
+                    <li><b><a href="https://github.com/andreaferretti/paths-js">PathsJs</a></b> is a minimal library by Andrea Ferretti that is, explicitly and by design, oriented to support reactive programming by generating SVG paths that can be used with template engines. It offers three API levels, of increasing abstraction. The lowest level is a chainable API to generate an arbitrary SVG path. On top of this, paths for simple geometric shapes such as polygons or circle sectors are defined. At the highest level, there is an API to generate some simple graphs (pie, line chart, radar...) for a collection of data, assembling the simple shapes.
                     </li>
                     <li><b><a href="https://github.com/n3-charts">n3-charts</a></b> is a visualization library specifically designed to be used in conjunction with Angular. At the moment, they only offer line-charts, bar-charts and pie-charts. The API is only high-level but the quality of the graphics is very good.</li>
                 </ul>
